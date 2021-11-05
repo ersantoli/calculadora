@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body{
+            background:linear-gradient(45deg,red,black);
+        }
+
+        .calculadora{
+            color: rgba(115, 45, 245, 0.945);
+            width: 390px;
+            height: 570px;
+            background-color: rgba(31,31,31,1);
+            position: absolute;
+            top: 80px;
+            left: 150px;
+           border-radius: 35px;
+           overflow: hidden;
+            text-align: center;
+
+        }
+        .painel{
+            width: 340px;
+            padding: 5px;
+            margin: 25px;
+            align-items: center;
+            display: grid;
+            grid-template-columns: 2fr 2fr 2fr  ;
+            grid-template-rows: 1fr 1fr ;            
+            grid-template-areas:
+            ". letra voltar btnDividir "
+            "btn7 btn8 btn9 btnMais "
+            "btn6 btn5 btn4  btnMenos"
+            "btn3  btn2  btn1 btnVezes  "
+            ".  btn0  btnIgual btnp" ;            
+          gap: 3px;
+        }
+        button{
+            
+            color: white;
+            background-color: rgb(34, 34, 34);
+            width: 60px;
+            height: 60px;
+            border-radius:100% ;
+            border: 2px solid white;
+            font-size: 50px;
+            box-shadow:2px 2px 1px 1px blue;
+            
+            
+        
+                  
+        }
+        button:hover{
+            background-color: black;
+            width: 70px;
+            height: 60px;
+        }
+        .btnIgual:hover{
+            color: rgb(13, 228, 13);
+            background-color: white;
+        }
+        #resultado{
+            width: 330px;
+            height: 100px;
+            border:  5px inset rgb(101, 241, 8);
+            background: linear-gradient(45deg,rgb(127, 241, 127),darkgreen);
+            margin-left: 25px;
+            font-size: 40px;
+            
+        }
+    
+        
+         .btn1{
+            display: grid;
+            grid-area: btn1;
+        }
+        .btn2{
+            display: grid;
+            grid-area: btn2;
+        }
+        .btn3{
+            display: grid;
+            grid-area: btn3;
+        }
+        .btn4{
+            display: grid;
+            grid-area: btn4;
+        }
+        .btn5{
+            display: grid;
+            grid-area: btn5;
+        }
+        .btn6{
+            display: grid;
+            grid-area: btn6;
+        }
+        .btn7{
+            display: grid;
+            grid-area: btn7;
+        }
+        .btn8{
+            display: grid;
+            grid-area: btn8;
+        }
+        .btn9{
+            display: grid;
+            grid-area: btn9;
+        }
+        .btn0{
+            display: grid;
+            grid-area: btn0;
+        }
+        .btnMais{
+            display: grid;
+            grid-area: btnMais;
+            color: rgb(13, 228, 13);
+        }
+        .btnMenos{
+            display: grid;
+            grid-area: btnMenos;
+            color: rgb(13, 228, 13);
+        }
+        .btnVezes{
+            display: grid;
+            grid-area: btnVezes;
+            color: rgb(13, 228, 13);
+        }
+        .btnDividir{
+            display: grid;
+            grid-area: btnDividir;
+            color: rgb(13, 228, 13);
+        }
+        .btnp{
+            display: grid;
+            grid-area: btnp;
+        }
+        .btnIgual{
+            display: grid;
+            grid-area: btnIgual;
+            width: auto;
+            background-color:rgb(13, 228, 13) ;
+            
+
+        }
+        .letra{
+            display: grid;
+            grid-area: letra;
+            width: auto;
+            color: coral;
+            margin-left: -55px;
+            margin-right: 35px;
+        
+
+        }
+        .voltar{
+            display: grid;
+            grid-area: voltar;
+            width: auto;
+            color: coral;
+            margin-left: -23px;
+            margin-right: 15px;
+        }
+        .linha1{
+            position: absolute;
+            top:0px;
+            width: 20px;
+            height: 610px;
+            background:linear-gradient(90deg,blue,darkblue,rgb(2, 2, 97));
+        }
+        .linha2{
+            position: absolute;
+            top:0px;
+            left: 370px;
+            width: 20px;
+            height: 610px;
+            background:linear-gradient(90deg,blue,darkblue,rgb(2, 2, 97));
+
+        }
+        .texto{
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            left: 600px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora"><h1>Calculadora</h1>
+        <p style="color: rgb(250, 23, 23);"  id="resultado"></p>
+        
+        <div class="painel">
+        <button class="btn btn7" onclick="insert('7')">7</button>
+        <button class="btn  btn8" onclick="insert('8')">8</button>
+        <button class="btn  btn9" onclick="insert('9')">9</button>
+        <button class="btn  btn4" onclick="insert('4')">4</button>
+        <button class="btn  btn5" onclick="insert('5')">5</button>
+        <button class="btn  btn6" onclick="insert('6')">6</button>
+        <button class="btn  btn3" onclick="insert('3')">3</button>
+        <button class="btn  btn2" onclick="insert('2')">2</button>
+        <button class="btn  btn1" onclick="insert('1')">1</button>
+        <button class="btn  btn0" onclick="insert('0')">0</button>
+        <button class="btn  btnp" onclick="insert('.')">.</button>
+        <button class="btn  btnIgual" onclick="calcular()">=</button>
+        <button class="btn btnMais" onclick="insert('+')">+</button>
+        <button class="btn btnMenos" onclick="insert('-')">-</button>
+        <button class="btn btnVezes" onclick="insert('*')">x</button>
+        <button class="btn btnDividir" onclick="insert('/')">/</button>
+        <button class="letra" onclick="clean()">c</button>
+        <button class="voltar" onclick="back()"><</button>
+        
+    </div>
+    <div class="linha1">1</div>
+    <div class="linha2">2</div>
+    </div>
+    <div class="texto">
+        <h1>Obrigado por usar minha calculadora</h1>
+        <h2>Feita com html,Css e Javascript Basico</h2>
+        <h3>Desenvolvedor: <img>Razz code  </h3>
+        <p>Em desenvolvimento</p>
+    </div>
+    <script>
+        function insert(num)
+        {
+var numero=document.getElementById('resultado').innerHTML;
+document.getElementById('resultado').innerHTML = numero+num;
+        }
+        function clean(){
+            document.getElementById('resultado').innerHTML = "";
+        }
+        function back(){
+            var resultado = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = resultado.substring(0,resultado.length -1);
+        }
+        function calcular(){
+            var resultado = document.getElementById('resultado').innerHTML;
+            if(resultado){
+                document.getElementById('resultado').innerHTML =eval(resultado);
+            }
+            
+        }
+    </script>
+</body>
+</html>
